@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sales-chart',
-  templateUrl: './sales-chart.component.html',
-  styleUrls: ['./sales-chart.component.css']
+  selector: 'app-diagram',
+  templateUrl: './diagram.component.html',
+  styleUrls: ['./diagram.component.css']
 })
-export class SalesChartComponent {
+export class DiagramComponent {
   single = [
     {
       name: 'Германия',

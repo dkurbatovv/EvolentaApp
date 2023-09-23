@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SalesChartComponent } from './sales-chart/sales-chart.component';
+import { DiagramComponent } from './diagram/diagram.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SalesChartComponent
+    DiagramComponent
   ],
   imports: [
     BrowserModule,
