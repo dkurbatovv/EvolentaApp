@@ -1,0 +1,106 @@
+<form>
+  <div>
+    <h1>Добавьте книгу</h1>
+    <label>Название книги</label>
+    <input
+      minlength="2"
+      maxlength="10"
+      pattern="[а-яА-ЯёЁ]+"
+      required
+      #title="ngModel"
+      name="title"
+      [(ngModel)]="create_book.title"
+      type="text"
+    />
+
+    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+      <div
+        *ngIf="title.hasError('minlength')"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Минимальная длина должна быть больше 2 символов
+      </div>
+      <div
+        *ngIf="title.hasError('required')"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Поле должно быть заполнено
+      </div>
+      <div
+        *ngIf="title.hasError('pattern')"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Поле должно содержать только русские буквы
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label>Автор</label>
+    <input
+      minlength="2"
+      maxlength="10"
+      pattern="[а-яА-ЯёЁ]+"
+      required
+      #author="ngModel"
+      name="author"
+      [(ngModel)]="create_book.author"
+      type="text"
+    />
+
+    <div *ngIf="author.invalid && (author.dirty || author.touched)">
+      <div
+        *ngIf="author.hasError('minlength')"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Минимальная длина должна быть больше 2 символов
+      </div>
+      <div
+        *ngIf="author.hasError('required')"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Поле должно быть заполнено
+      </div>
+      <div
+        *ngIf="author.hasError('pattern')"
+        class="alert alert-danger mt-2"
+        role="alert"
+      >
+        Поле должно содержать только русские буквы
+      </div>
+    </div>
+  </div>
+  <button
+    [disabled]="title.invalid || author.invalid"
+    (click)="createBook()"
+    type="submit"
+  >
+    Добавить
+  </button>
+</form>
+
+
+<div>
+  <h1>Список книг</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Номер</th>
+        <th>Название книги</th>
+        <th>Автор</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
