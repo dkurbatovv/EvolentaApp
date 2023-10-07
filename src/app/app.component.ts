@@ -16,27 +16,37 @@ export class AppComponent {
   sequentialSubscribe$!: Subscription;
   randomSubscribe$!: Subscription;
 
+  isSequentialActive = false;
+  isRandomActive = false;
+
   constructor() { }
 
   start() {
-    this.sequentialSubscribe$ = interval(2000).subscribe((value) => {
-      this.sequentialNumbers.push(value);
-    });
-
-    this.randomSubscribe$ = interval(2000).pipe(
-      map(() => `Random Value: ${Math.floor(Math.random() * 1000)}`)).subscribe((value) => {
-      this.randomNumbers.push(value);
-    });
+    if (!this.isSequentialActive) {
+      this.isSequentialActive = true;
+      this.sequentialSubscribe$ = interval(2000).subscribe((value) => {
+        this.sequentialNumbers.push(value);
+      });
+    }
+    if (!this.isRandomActive) {
+      this.isRandomActive = true;
+      this.randomSubscribe$ = interval(2000).pipe(
+        map(() => `Random Value: ${Math.floor(Math.random() * 1000)}`)).subscribe((value) => {
+        this.randomNumbers.push(value);
+      });
+    }
   }
 
   stopSequential() {
-    if (this.sequentialSubscribe$) {
+    if (this.isSequentialActive) {
+      this.isSequentialActive = false;
       this.sequentialSubscribe$.unsubscribe();
     }
   }
 
   stopRandom() {
-    if (this.randomSubscribe$) {
+    if (this.isRandomActive) {
+      this.isRandomActive = false;
       this.randomSubscribe$.unsubscribe();
     }
   }
