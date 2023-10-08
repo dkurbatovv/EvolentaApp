@@ -1,0 +1,31 @@
+<div class="menu">
+    <a routerLink="/" class="menu-link" aria-current="page">Главная</a>
+    <a routerLink="/posts" class="menu-link" aria-current="page">Страница постов</a>
+  </div>
+  <div class="container">
+    <div class="info">
+      <span>Текущая роль: {{ dataService.role }}</span>
+    </div>
+    <div class="button-container">
+      <button
+        [ngClass]="{ 'button': true, 'active': dataService.role === 'admin' }"
+        (click)="dataService.role = 'admin'"
+        type="button"
+      >
+        Поставить роль Админа
+      </button>
+      <button
+        [ngClass]="{ 'button': true, 'active': dataService.role === 'user' }"
+        (click)="dataService.role = 'user'"
+        type="button"
+      >
+        Поставить роль Пользователя
+      </button>
+    </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  
+  <router-outlet></router-outlet>
+
+  

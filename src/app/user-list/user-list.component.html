@@ -1,0 +1,31 @@
+<app-home></app-home>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let post of posts">
+        <div class="card">
+          <div class="table">
+            <div class="table-row">
+              <div class="table-cell">
+                <h5 class="card-title">{{ post.title }}</h5>
+              </div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell">
+                <p class="card-text">{{ post.body }}</p>
+              </div>
+            </div>
+            <div class="table-row">
+              <div class="table-cell">
+                <a [routerLink]="['/posts', post.id]" class="btn btn-primary">Редактировать</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <router-outlet></router-outlet>
+  
+
+  

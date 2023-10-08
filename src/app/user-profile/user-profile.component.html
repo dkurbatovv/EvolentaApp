@@ -1,0 +1,23 @@
+<div class="container">
+    <div *ngIf="!editing">
+      <h2>{{ post?.title }}</h2>
+      <p>{{ post?.body }}</p>
+      <button (click)="editPost()">Редактировать</button>
+    </div>
+    <div *ngIf="editing">
+      <form (ngSubmit)="savePost()">
+        <div class="form-group">
+          <label for="title">Заголовок:</label>
+          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="post.title">
+        </div>
+        <div class="form-group">
+          <label for="body">Текст:</label>
+          <textarea class="form-control" id="body" name="body" [(ngModel)]="post.body"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Отмена</button>
+      </form>
+    </div>
+  </div>
+   
+<a routerLink="/" class="btn btn-link">На главную</a>
