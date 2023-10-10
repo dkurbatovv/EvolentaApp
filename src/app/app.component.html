@@ -1,0 +1,7 @@
+<div>
+  <input [(ngModel)]="newTodo" placeholder="Введите новую задачу">
+  <button (click)="addTodo()">Добавить задачу</button>
+</div>
+<ul>
+  <li *ngFor="let todo of todos">{{ todo.text }}</li>
+</ul>
